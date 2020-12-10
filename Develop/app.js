@@ -35,7 +35,7 @@ const render = require("./lib/htmlRenderer");
 // for the provided `render` function to work! ```
 
 
-let employeesArr = [];
+let employees = [];
 
 function getEmployeeClass(){
     inquirer.prompt([
@@ -105,3 +105,11 @@ function addManager () {
  })
 }
 
+function renderMain () {
+    const HTML = render(employees);
+    fs.writeFile(outputPath, HTML, (err) => {
+        if (err) throw err
+    })
+}
+
+getEmployeeClass()
