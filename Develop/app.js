@@ -33,3 +33,75 @@ const render = require("./lib/htmlRenderer");
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
+
+
+let employeesArr = [];
+
+function getEmployeeClass(){
+    inquirer.prompt([
+    {
+      type: "list",
+      message: "Choose employee's job classification.",
+      name: "classInput",
+      choices: ["Manager", "Engineer", "Intern"],
+    },
+  ])
+    .then((res) => {
+    if(res.classInput === "Manager") {
+        addManager()
+    } else if(res.classInput === "Engineer") {
+        addEngineer()
+    } else {
+        addIntern()
+    }
+    })
+}
+
+
+function addNewMember() {
+    inquirer.prompt([
+    {
+        type: "confirm",
+        message: "Would you like to add another team member?",
+        name: "addMember",
+        default: true,
+    },
+    ]).then(addRes => {
+    if (addRes.addMember) {
+        getEmployeeClass();
+    } else {
+        renderMain();
+    };
+    });
+};
+
+function addManager () {
+    inquirer.prompt([
+    {
+        type: "input",
+        message: "Enter Manager name.",
+        name: "managerName",
+    },
+    {
+        type: "input",
+        message: "Enter Manager employee ID.",
+        name: "managerID",
+    },
+    {
+        type: "input",
+        message: "Enter Manager email.",
+        name: "managerEmail",
+    },
+    {
+        type: "input",
+        message: "Enter Manager office number.",
+        name: "managerOfficeNum",
+    },
+  ])
+  .then((managerRes) => {
+    const newManager = new Manager(managerRes.managerName, managerRes.managerID, managerRes.managerEmail, managerRes.managerOfficeNum);
+    employeeArr.push(newManager);
+    addNewMember()
+ })
+}
+
