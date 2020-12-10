@@ -108,7 +108,7 @@ function addManager () {
 function renderMain () {
     const HTML = render(employees);
     fs.writeFile(outputPath, HTML, (err) => {
-        if (err) throw err
+        if (err) throw err;
     })
 }
 
