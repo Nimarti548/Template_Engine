@@ -142,8 +142,8 @@ function addIntern () {
 }
 
 function renderMain () {
-    const HTML = render(employees);
-    fs.writeFile(outputPath, HTML, (err) => {
+    const mainHTML = render(employees);
+    fs.writeFile(outputPath, mainHTML, (err) => {
         if (err) throw err;
     })
 }
