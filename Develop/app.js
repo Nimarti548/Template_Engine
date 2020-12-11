@@ -76,7 +76,37 @@ function addManager () {
     ])
     .then((managerRes) => {
     const newManager = new Manager(managerRes.managerName, managerRes.managerID, managerRes.managerEmail, managerRes.managerOfficeNum);
-    employeeArr.push(newManager);
+    employees.push(newManager);
+    addNewMember()
+    })
+}
+
+function addEngineer () {
+    inquirer.prompt([
+    {
+        type: "input",
+        message: "Enter Engineer's name.",
+        name: "engineerName",
+    },
+    {
+        type: "input",
+        message: "Enter Engineer employee ID.",
+        name: "engineerID",
+    },
+    {
+        type: "input",
+        message: "Enter Engineer email.",
+        name: "engineerEmail",
+    },
+    {
+        type: "input",
+        message: "Enter Engineer office number.",
+        name: "engineerOfficeNum",
+    },
+    ])
+    .then((engineerRes) => {
+    const newEngineer = new Engineer(engineerRes.engineerName, engineerRes.managerID, engineerRes.engineerEmail, engineerRes.engineerOfficeNum);
+    employees.push(newEngineer);
     addNewMember()
     })
 }
