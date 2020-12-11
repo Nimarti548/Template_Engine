@@ -111,6 +111,36 @@ function addEngineer () {
     })
 }
 
+function addIntern () {
+    inquirer.prompt([
+    {
+        type: "input",
+        message: "Enter Intern name.",
+        name: "internName",
+    },
+    {
+        type: "input",
+        message: "Enter Intern employee ID.",
+        name: "internID",
+    },
+    {
+        type: "input",
+        message: "Enter Intern email.",
+        name: "internEmail",
+    },
+    {
+        type: "input",
+        message: "Enter Intern office number.",
+        name: "internOfficeNum",
+    },
+    ])
+    .then((internRes) => {
+    const newIntern = new Intern(internRes.internName, internRes.internID, internRes.internEmail, internRes.internOfficeNum);
+    employees.push(newIntern);
+    addNewMember()
+    })
+}
+
 function renderMain () {
     const HTML = render(employees);
     fs.writeFile(outputPath, HTML, (err) => {
