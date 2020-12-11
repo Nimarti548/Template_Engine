@@ -100,8 +100,8 @@ function addEngineer () {
     },
     {
         type: "input",
-        message: "Enter Engineer office number.",
-        name: "engineerOfficeNum",
+        message: "Enter Engineer GitHub profile.",
+        name: "engineerGithub",
     },
     ])
     .then((engineerRes) => {
@@ -130,8 +130,8 @@ function addIntern () {
     },
     {
         type: "input",
-        message: "Enter Intern office number.",
-        name: "internOfficeNum",
+        message: "Enter Intern School.",
+        name: "internSchool",
     },
     ])
     .then((internRes) => {
