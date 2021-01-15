@@ -141,8 +141,12 @@ function addIntern () {
     })
 }
 
+
 function renderMain () {
     const mainHTML = render(employees);
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR);
+      }
     fs.writeFile(outputPath, mainHTML, (err) => {
         if (err) throw err;
     })
